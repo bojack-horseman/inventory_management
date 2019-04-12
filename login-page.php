@@ -14,10 +14,10 @@
       <h1 class=" text-center">Login Page</h1>
       <form action="#" class="p-4" name="login-form" method="POST">
         <div class="form-group">
-          <input type="text" class="form-control" id="email" placeholder="username" name="username">
+          <input type="text" class="form-control" id="email" placeholder="username" name="username" required>
         </div>
         <div class="form-group">
-          <input type="password" class="form-control" id="pwd" placeholder="password" name="password">
+          <input type="password" class="form-control" id="pwd" placeholder="password" name="password" required>
         </div>
         <div class="form-group form-check">
           <label class="form-check-label">

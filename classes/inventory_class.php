@@ -22,6 +22,7 @@ class inventory_class
         $login_fetch=mysqli_fetch_assoc($login_result);
         $id= $login_fetch['id'];
         $type = $login_fetch['type'];
+        // echo
         session_start();
         $_SESSION['id'] = $id;
         $_SESSION['usertype'] = $type;
@@ -33,6 +34,20 @@ class inventory_class
       }
       return 1;
     }
+  }
+  public function list_inventory()
+  {
+    $list_sql = "SELECT * FROM inventory";
+    $list_result = mysqli_query($this->inventory,$list_sql);
+    $list_count = mysqli_num_rows($list_result);
+    if($list_count > 0){
+      $list_fetch=mysqli_fetch_assoc($list_result);
+      print_r($list_fetch); die;
+    }
+    else {
+      echo"Nothing in Inventory";
+    }
+    return json_encode($list_fetch);
   }
 }
 ?>
