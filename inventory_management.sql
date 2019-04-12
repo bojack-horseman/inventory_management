@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Apr 11, 2019 at 07:30 PM
+-- Generation Time: Apr 12, 2019 at 03:24 PM
 -- Server version: 5.7.21
 -- PHP Version: 7.1.19
 
@@ -28,15 +28,23 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `inventory` (
   `id` int(11) NOT NULL,
-  `product_id` int(11) NOT NULL,
+  `product_id` varchar(12) NOT NULL,
   `product_name` varchar(30) NOT NULL,
   `vendor` varchar(30) NOT NULL,
   `mrp` int(6) NOT NULL,
-  `batch_number` int(10) NOT NULL,
+  `batch_number` varchar(12) NOT NULL,
   `batch_date` date NOT NULL,
   `quantity` int(6) NOT NULL,
-  `status` int(1) NOT NULL
+  `status` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `inventory`
+--
+
+INSERT INTO `inventory` (`id`, `product_id`, `product_name`, `vendor`, `mrp`, `batch_number`, `batch_date`, `quantity`, `status`) VALUES
+(1, 'P0001', 'Levis Green Tshirt', 'Levis India', 399, 'B0001', '2019-03-15', 5, 'Pending'),
+(2, 'P0002', 'Levis Orange Tshirt', 'Levis Australia', 599, 'B0002', '2019-03-05', 8, 'Pending');
 
 -- --------------------------------------------------------
 
@@ -83,7 +91,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `inventory`
 --
 ALTER TABLE `inventory`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `user`
