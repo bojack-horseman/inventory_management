@@ -7,5 +7,6 @@ require_once('../classes/inventory_class.php');
 
 $test_data = new inventory_class();
 $list_data = $test_data->list_inventory();
+// print_r($list_data); die;
 echo json_encode($list_data);
 ?>

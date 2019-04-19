@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Apr 12, 2019 at 03:24 PM
+-- Generation Time: Apr 19, 2019 at 02:45 PM
 -- Server version: 5.7.21
 -- PHP Version: 7.1.19
 
@@ -44,7 +44,9 @@ CREATE TABLE `inventory` (
 
 INSERT INTO `inventory` (`id`, `product_id`, `product_name`, `vendor`, `mrp`, `batch_number`, `batch_date`, `quantity`, `status`) VALUES
 (1, 'P0001', 'Levis Green Tshirt', 'Levis India', 399, 'B0001', '2019-03-15', 5, 'Pending'),
-(2, 'P0002', 'Levis Orange Tshirt', 'Levis Australia', 599, 'B0002', '2019-03-05', 8, 'Pending');
+(2, 'P0002', 'Levis Orange Tshirt', 'Levis Australia', 599, 'B0002', '2019-03-05', 8, 'Pending'),
+(3, 'P0003', 'Levis Yellow Tshirt', 'Levis China', 795, 'B0003', '2019-04-01', 9, 'Approved'),
+(4, 'P0004', 'Levis Blue Shirt', 'Levis Brazil', 990, 'B0004', '2019-01-06', 4, 'Approved');
 
 -- --------------------------------------------------------
 
@@ -91,7 +93,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `inventory`
 --
 ALTER TABLE `inventory`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `user`

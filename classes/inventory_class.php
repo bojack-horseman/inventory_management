@@ -37,17 +37,32 @@ class inventory_class
   }
   public function list_inventory()
   {
-    $list_sql = "SELECT * FROM inventory";
+    $list_fetch = array();
+    $list_sql = "SELECT product_name, vendor, mrp, quantity, status FROM inventory";
     $list_result = mysqli_query($this->inventory,$list_sql);
     $list_count = mysqli_num_rows($list_result);
     if($list_count > 0){
-      $list_fetch=mysqli_fetch_assoc($list_result);
-      print_r($list_fetch); die;
+      while($row = mysqli_fetch_assoc($list_result))
+      {
+        array_push($list_fetch, $row);
+      }
     }
     else {
       echo"Nothing in Inventory";
     }
-    return json_encode($list_fetch);
+    return $list_fetch;
+  }
+
+  public function add_inventory($data)
+  {
+    if(isset($data) && !is_null($data)){
+      $status = ($data['user_type'] == 1) ? "Approved" : "Pending";
+      $add_sql = "INSERT INTO inventory (product_id, product_name, quantity, vendor, mrp, status, batch_number, batch_date) VALUES ('".$data['product_id']."','".$data['product_name']."', '".$data['quantity']."', '".$data['vendor']."', '".$data['mrp']."', '".$status."', '".$data['batch_number']."', '".$data['batch_date']."')";
+      $add_result=mysqli_query($this->inventory,$add_sql);
+      $add_query = ($add_result) ? "success" : "failure";
+      return $add_query;
+    }
+
   }
 }
 ?>
