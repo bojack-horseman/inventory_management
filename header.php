@@ -3,21 +3,21 @@
     <a class="navbar-brand" href="#">
       <img src="images/bird.jpg" alt="logo" style="width:40px;">
     </a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="collapsibleNavbar">
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
-      </li>
-    </ul>
-  </div>
-</nav>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="manage-inventory.php">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Preference</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="logout-page.php">Logout</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
 </header>

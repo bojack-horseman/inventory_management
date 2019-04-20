@@ -38,7 +38,7 @@ class inventory_class
   public function list_inventory()
   {
     $list_fetch = array();
-    $list_sql = "SELECT product_name, vendor, mrp, quantity, status FROM inventory";
+    $list_sql = "SELECT id, product_name, vendor, mrp, quantity, status FROM inventory";
     $list_result = mysqli_query($this->inventory,$list_sql);
     $list_count = mysqli_num_rows($list_result);
     if($list_count > 0){
@@ -63,6 +63,38 @@ class inventory_class
       return $add_query;
     }
 
+  }
+  public function update_inventory($data)
+  {
+    if(isset($data) && !is_null($data)){
+       // print_r($data); die;
+      $update_fetch = array();
+      $update_sql="SELECT * FROM inventory WHERE id = '".$data['id']."'";
+      $update_result=mysqli_query($this->inventory,$update_sql);
+      $update_count=mysqli_num_rows($update_result);
+      if ($update_count == 1){
+        while($row = mysqli_fetch_assoc($update_result))
+        {
+          array_push($update_fetch, $row);
+        }
+      }
+      else{
+        $update_fetch = "no result found";
+      }
+      
+      return $update_fetch;
+    }
+  }
+
+  public function remove_inventory($data)
+  {
+    if(isset($data) && !is_null($data)){
+       print_r($data); die;
+      $remove_sql="DELETE FROM inventory WHERE id= '".$data['id']."'";
+      $remove_result=mysqli_query($this->inventory,$remove_sql);
+      $remove_query = ($remove_result) ? "success" : "failure";
+      return $remove_query;
+    }
   }
 }
 ?>

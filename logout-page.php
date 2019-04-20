@@ -4,5 +4,4 @@ unset($_SESSION['id']);
 unset($_SESSION['username']);
 session_destroy();
 header("location: login-page.php");
-exit();
 ?>
