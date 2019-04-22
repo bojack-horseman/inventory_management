@@ -1,9 +1,9 @@
 .footer {
-   position: fixed;
-   left: 0;
-   bottom: 0;
-   width: 100%;
-   color: #FFF;
+  /* position: absolute; */
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  color: #FFF;
 }
 .edit-button:after {
   content: '\2807';
@@ -13,4 +13,8 @@
 }
 .loader{
   display: block;
+}
+.outer{
+  min-height:95vh;
+  position:relative;
 }

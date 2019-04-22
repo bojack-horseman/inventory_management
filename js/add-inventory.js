@@ -7,6 +7,7 @@ $(document).ready(function(){
       url: '../inventory_sample/webservice/add-inventory.php',
       data: form_data,
       success: function(response){
+        //console.log(response);
         var obj = JSON.parse(response);
         if (obj == "success"){
           $('#myModal').modal("hide");

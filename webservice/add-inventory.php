@@ -8,5 +8,6 @@ require_once('../classes/inventory_class.php');
 $form_data = $_REQUEST;
 $test_data = new inventory_class();
 $add_data = $test_data->add_inventory($form_data);
+// print_r($add_data); die;
 echo json_encode($add_data);
 ?>

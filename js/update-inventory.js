@@ -3,6 +3,7 @@ $(document).on("click", ".edit-click", function(event){
   // console.log("event");
   var params = {};
   params['id'] = $(this).closest('tr').find('.product_id').text();
+  // if()
   // console.log(val);
   $.ajax({
     type:'POST',
@@ -15,15 +16,17 @@ $(document).on("click", ".edit-click", function(event){
       for(var i =0;i < obj.length; i++)
       {
         $('#myModal').modal("show");
-        $("#product_id").val(obj[i]["id"]);
+        $("#id").val(obj[i]["id"]);
+        $("#product_id").val(obj[i]["product_id"]);
         $("#product_name").val(obj[i]["product_name"]);
         $("#quantity").val(obj[i]["quantity"]);
         $("#vendor").val(obj[i]["vendor"]);
         $("#mrp").val(obj[i]["mrp"]);
         $("#batch_number").val(obj[i]["batch_number"]);
         $("#batch_date").val(obj[i]["batch_date"]);
+        // $("#addinventory_submit").hide();
+        // $("#updateinventory_submit").removeClass('d-none').addClass('d-block');
       }
     }
   });
-
 });

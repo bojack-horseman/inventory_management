@@ -21,8 +21,7 @@ else{
 </head>
 <body>
   <?php include 'header.php';?>
-  <div id="manage_inventory" class=""></div>
-  <div class="container-fluid">
+  <div class="container-fluid outer">
     <div class="row mt-2">
       <div class="col-10 bg-dark">
         <div class="float-left p-2">
@@ -31,12 +30,12 @@ else{
       </div>
       <div class="col-2 bg-dark">
         <div class="float-right p-2">
-          <input type="button" value="+" class= "btn btn-dark" data-toggle="modal" data-target="#myModal"/>
+          <input type="button" value="+" id="button_add" class= "btn btn-dark" data-toggle="modal" data-target="#myModal"/>
         </div>
       </div>
       <div class="col-12">
         <image src="images/loader.gif" id="loading-image" class="mx-auto loader">
-          <div class="table-responsive table-wrapper">
+          <div class="table-responsive">
             <table class="table table-style">
               <thead class="heading-box">
                 <tr>
@@ -66,6 +65,11 @@ else{
             <div class="modal-body">
               <form action="#" class="p-4" name="inventory-form" method="POST">
                 <div class="row">
+                  <div class="col-12 px-0 d-none">
+                    <div class="form-group">
+                      <input type="hidden" class="form-control" id="id" placeholder="id" name="id" value="">
+                    </div>
+                  </div>
                   <div class="col-12 px-0 d-none">
                     <div class="form-group">
                       <input type="hidden" class="form-control" id="user_type" placeholder="usertype" name="user_type" value="<?php echo $user_type;?>">
@@ -107,6 +111,7 @@ else{
                     </div>
                   </div>
                   <button type="submit" class="btn btn-success btn-block" id="addinventory_submit">Submit</button>
+                  <button type="submit" class="btn btn-warning d-none btn-block" id="updateinventory_submit">Update</button>
                 </div>
               </form>
             </div>
@@ -125,5 +130,6 @@ else{
   <script src="js/manage-inventory.js"></script>
   <script src="js/add-inventory.js"></script>
   <script src="js/update-inventory.js"></script>
+  <!-- <script src="js/inventory-update.js"></script> -->
   <script src="js/remove-inventory.js"></script>
   </html>

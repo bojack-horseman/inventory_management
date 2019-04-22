@@ -10,6 +10,7 @@ class inventory_class
     $this->inventory = $connect->connection();
     $this->date_added = strtotime(date('Y-m-d-H-i-s'));
   }
+
   public function ajax_login($data){
     if(isset($data) && !is_null($data)){
       $username = $data["username"];
@@ -35,6 +36,7 @@ class inventory_class
       return 1;
     }
   }
+
   public function list_inventory()
   {
     $list_fetch = array();
@@ -56,18 +58,28 @@ class inventory_class
   public function add_inventory($data)
   {
     if(isset($data) && !is_null($data)){
+      //print_r($data); die;
       $status = ($data['user_type'] == 1) ? "Approved" : "Pending";
-      $add_sql = "INSERT INTO inventory (product_id, product_name, quantity, vendor, mrp, status, batch_number, batch_date) VALUES ('".$data['product_id']."','".$data['product_name']."', '".$data['quantity']."', '".$data['vendor']."', '".$data['mrp']."', '".$status."', '".$data['batch_number']."', '".$data['batch_date']."')";
-      $add_result=mysqli_query($this->inventory,$add_sql);
-      $add_query = ($add_result) ? "success" : "failure";
+      $inventory = "SELECT id from inventory where id ='".$data['id']."' ";
+      $inventory_result=mysqli_query($this->inventory,$inventory);
+      $inventory_count=mysqli_num_rows($inventory_result);
+      if ($inventory_count == 1){
+        $add_sql = "UPDATE inventory SET product_id = '".$data['product_id']."', product_name = '".$data['product_name']."', quantity = '".$data['quantity']."', vendor = '".$data['vendor']."', mrp = '".$data['mrp']."', batch_number = '".$data['batch_number']."', batch_date = '".$data['batch_date']."' WHERE id = '".$data['id']."'";
+        $add_result=mysqli_query($this->inventory,$add_sql);
+      }
+      else{
+        $add_sql = "INSERT INTO inventory (product_id, product_name, quantity, vendor, mrp, status, batch_number, batch_date) VALUES ('".$data['product_id']."','".$data['product_name']."', '".$data['quantity']."', '".$data['vendor']."', '".$data['mrp']."', '".$status."', '".$data['batch_number']."', '".$data['batch_date']."')";
+        $add_result=mysqli_query($this->inventory,$add_sql);
+      }
+      $add_query = ($add_result) ? "success" : "failure, can't add/update to inventory, need Store Admin Permission";
       return $add_query;
     }
-
   }
+
   public function update_inventory($data)
   {
     if(isset($data) && !is_null($data)){
-       // print_r($data); die;
+      // print_r($data); die;
       $update_fetch = array();
       $update_sql="SELECT * FROM inventory WHERE id = '".$data['id']."'";
       $update_result=mysqli_query($this->inventory,$update_sql);
@@ -81,7 +93,6 @@ class inventory_class
       else{
         $update_fetch = "no result found";
       }
-      
       return $update_fetch;
     }
   }
@@ -89,7 +100,6 @@ class inventory_class
   public function remove_inventory($data)
   {
     if(isset($data) && !is_null($data)){
-       print_r($data); die;
       $remove_sql="DELETE FROM inventory WHERE id= '".$data['id']."'";
       $remove_result=mysqli_query($this->inventory,$remove_sql);
       $remove_query = ($remove_result) ? "success" : "failure";
