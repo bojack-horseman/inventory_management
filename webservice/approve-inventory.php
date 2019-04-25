@@ -7,6 +7,6 @@ require_once('../classes/inventory_class.php');
 
 $form_data = $_REQUEST;
 $test_data = new inventory_class();
-$login_data = $test_data->ajax_login($form_data);
-echo json_encode($login_data);
+$remove_data = $test_data->approve_inventory($form_data);
+echo json_encode($remove_data);
 ?>

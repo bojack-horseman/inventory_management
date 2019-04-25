@@ -23,7 +23,6 @@ class inventory_class
         $login_fetch=mysqli_fetch_assoc($login_result);
         $id= $login_fetch['id'];
         $type = $login_fetch['type'];
-        // echo
         session_start();
         $_SESSION['id'] = $id;
         $_SESSION['usertype'] = $type;
@@ -104,6 +103,25 @@ class inventory_class
       $remove_result=mysqli_query($this->inventory,$remove_sql);
       $remove_query = ($remove_result) ? "success" : "failure";
       return $remove_query;
+    }
+  }
+
+  public function approve_inventory($data)
+  {
+    if(isset($data) && !is_null($data)){
+      print_r($data); die;
+      $inventory = "SELECT id from inventory where id ='".$data['id']."' ";
+      $inventory_result=mysqli_query($this->inventory,$inventory);
+      $inventory_count=mysqli_num_rows($inventory_result);
+      if ($inventory_count == 1){
+        $approve_sql = "UPDATE inventory SET status = '"Approved"' WHERE id = '".$data['id']."'";
+        $approve_result = mysqli_query($this->inventory,$approve_sql);
+      }
+      else{
+        $approve_result = "";
+      }
+      $approve_query = ($approve_result) ? "success" : "failure";
+      return $approve_query;
     }
   }
 }

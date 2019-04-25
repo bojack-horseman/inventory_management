@@ -11,9 +11,9 @@ $(document).ready(function(){
         var obj = JSON.parse(response);
         if (obj == "success"){
           $('#myModal').modal("hide");
-          setTimeout(function(){// wait for 3 secs(2)
+          setTimeout(function(){// wait for 1 sec(2)
             window.location.reload(); // then reload the page.(3)
-          }, 3000);
+          }, 1000);
         }
         else{
           alert("insertion failed");

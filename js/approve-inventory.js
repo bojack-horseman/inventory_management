@@ -1,11 +1,11 @@
-$(document).on("click", ".delete-click", function(event){
+$(document).on("click", ".approve-click", function(event){
   if($("#user_type").val() == 1){
     event.stopPropagation();
     var params = {};
     params['id'] = $(this).closest('tr').find('.product_id').text();
     $.ajax({
       type:'POST',
-      url: '../inventory_sample/webservice/remove-inventory.php',
+      url: '../inventory_sample/webservice/approve-inventory.php',
       data: params,
       success: function(response){
         var obj = JSON.parse(response);
@@ -16,7 +16,7 @@ $(document).on("click", ".delete-click", function(event){
           }, 1000);
         }
         else{
-          alert("deletion failed");
+          alert("approval failed");
         }
       }
     });
