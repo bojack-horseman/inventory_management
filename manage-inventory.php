@@ -30,7 +30,7 @@ else{
       </div>
       <div class="col-2 bg-dark">
         <div class="float-right p-2">
-          <input type="button" value="+" id="button_add" class= "btn btn-dark" data-toggle="modal" data-target="#myModal"/>
+          <input type="button" value="+" id="button_add" class= "btn btn-dark" />
         </div>
       </div>
       <div class="col-12">

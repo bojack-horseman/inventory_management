@@ -8,8 +8,9 @@ $(document).on("click", ".approve-click", function(event){
       url: '../inventory_sample/webservice/approve-inventory.php',
       data: params,
       success: function(response){
+        //console.log(response);
         var obj = JSON.parse(response);
-        console.log(obj);
+        //console.log(obj);
         if (obj == "success"){
           setTimeout(function(){// wait for 1 sec(2)
             window.location.reload(); // then reload the page.(3)

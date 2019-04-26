@@ -109,11 +109,13 @@ class inventory_class
   public function approve_inventory($data)
   {
     if(isset($data) && !is_null($data)){
-      print_r($data); die;
-      $inventory = "SELECT id from inventory where id ='".$data['id']."' ";
+      // print_r($data); die;
+      $inventory = "SELECT id, status from inventory where id ='".$data['id']."' ";
       $inventory_result=mysqli_query($this->inventory,$inventory);
       $inventory_count=mysqli_num_rows($inventory_result);
-      if ($inventory_count == 1){
+      $row = mysqli_fetch_assoc($inventory_result);
+      //print_r($row); die;
+      if ($inventory_count == 1 && $row['status'] == 'Pending'){
         $approve_sql = "UPDATE inventory SET status = 'Approved' WHERE id = '".$data['id']."'";
         $approve_result = mysqli_query($this->inventory,$approve_sql);
       }
