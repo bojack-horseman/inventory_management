@@ -114,7 +114,7 @@ class inventory_class
       $inventory_result=mysqli_query($this->inventory,$inventory);
       $inventory_count=mysqli_num_rows($inventory_result);
       if ($inventory_count == 1){
-        $approve_sql = "UPDATE inventory SET status = '"Approved"' WHERE id = '".$data['id']."'";
+        $approve_sql = "UPDATE inventory SET status = 'Approved' WHERE id = '".$data['id']."'";
         $approve_result = mysqli_query($this->inventory,$approve_sql);
       }
       else{

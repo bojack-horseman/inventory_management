@@ -22,6 +22,6 @@ $(document).on("click", ".approve-click", function(event){
     });
   }
   else{
-    alert("don't have access to remove, contact Admin");
+    alert("don't have access to approve, contact Admin");
   }
 });

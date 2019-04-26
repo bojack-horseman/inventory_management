@@ -131,4 +131,5 @@ else{
   <script src="js/add-inventory.js"></script>
   <script src="js/update-inventory.js"></script>
   <script src="js/remove-inventory.js"></script>
+  <script src="js/approve-inventory.js"></script>
   </html>
